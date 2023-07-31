@@ -1,8 +1,9 @@
+import Gold from "./components/Gold.jsx";
 
 function App() {
   return (
     <>
-     <p>Check</p>
+     <Gold />
     </>
   )
 }
