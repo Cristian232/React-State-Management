@@ -1,4 +1,4 @@
-const pets = [
+const petsArray = [
   {
     "id": 1,
     "name": "Fluffy",
@@ -36,4 +36,4 @@ const pets = [
   }
 ]
 
-export default pets;
+export default petsArray;
