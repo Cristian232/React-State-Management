@@ -1,12 +1,15 @@
 import Silver from "./Silver.jsx";
 
-const Gold = (props) => {
+const Gold = ({pets, whichSpecies}) => {
 
     return (
         <div style={{color:"gold"}}>
-            <h1>Gold</h1>
-            {props.pets.map((pet)=><p key={pet.id}>{`${pet.name}, ${pet.species} age ${pet.age}`}</p>)}
-            <Silver pets={props.pets}/>
+            <h1 onClick={()=> whichSpecies({species: "none"})}>Gold</h1>
+            {pets.length > 0 &&
+                pets.map((pet) => {
+                    return <p key={pet.id}>{pet.name} age: {pet.age} species: {pet.species}</p>
+                })}
+            <Silver />
         </div>
     );
 };
