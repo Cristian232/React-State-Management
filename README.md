@@ -130,8 +130,31 @@
             1. The function, (not call!) your function back to you during the initial render. On next renders, React will give you the same function again if the dependencies have not changed since the last render. 
                <br/><br/>
         - Example
-            - ``` 
-          
+            - ```  
+              ..... Without callback
+              const getPets = () => {
+              return petsArray[count]
+              }
+              
+              ..... With callback
+              const getPets = useCallback(() => {
+              return petsArray[count]
+              },[count])
+              
+              .....
+              <Gold getPets={getPets}/>
+              <button onClick={...}>Get more pets :)</button>
+              <button onClick={...}>Unrelated Button</button>
+              .....
+              
+              const Gold = ({getPets}) => { 
+              ...
+              useEffect(() => {
+              setPets([...pets,getPets()])
+              }, [getPets]);
+              ...
               ```
-        - In this example, 
+        - In this example, we have 2 states and 1 function on App, function pass as prop to Gold. <br/> 
+        - Function always gets recreated, and after it gets called from use effect on render based on dependency. <br/>
+        - We use hook to memoize the initial function and use it even though another one gets created. This manages to recreate and use the initial function based on just one of the states, not always on both.
       <hr/>
