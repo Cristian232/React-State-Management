@@ -113,5 +113,25 @@
           const lowCalculationValue = lowResourceCalculation(state)
           ......
           ```
-      - In this example, at first both will calculate but on rerender always lowCalc will run and based on dependency heavyCalc will skip running again and keep previous value
+      - In this example, at first, both will calculate but on rerender always lowCalc will run and based on dependency heavyCalc will skip running again and keep previous value
+      <hr/>
+
+4. useCallback()
+    - `import {useCallback} from "react";`
+        - Lets you cache a function definition between re-renders. You should only rely on useCallback as a performance optimization.
+              <br/><br/>
+        - useCallback takes in 2 params `useCallback(function, dependencies)`
+            1. function
+                - Any kind of function you want to cache
+            2. dependencies
+                - Array of dependencies like useEffect
+                  <br/><br/>
+        - useCallback returns 1 value
+            1. The function, (not call!) your function back to you during the initial render. On next renders, React will give you the same function again if the dependencies have not changed since the last render. 
+               <br/><br/>
+        - Example
+            - ``` 
+          
+              ```
+        - In this example, 
       <hr/>
