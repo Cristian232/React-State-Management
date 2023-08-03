@@ -85,4 +85,33 @@
      - if we need dispatcher || Example
        - ` onClick={()=> whichSpecies({species: "none"})}`
        - P.S. most often used keys are action.type or action.payload for the json obj we pass on param
-       
+       <hr/>
+    
+3. useMemo()
+    - `import {useMemo} from "react";`
+      - We use it to keep expensive, resource intensive functions from needlessly running. 
+      - useMemo is a React Hook that lets you cache the result of a calculation between re-renders.
+          - Ex. Component rerenders and performs all of its logic calculation again (in case of thousands of values, should be avoided)
+          <br/><br/>
+      - useMemo takes in 2 params `useMemo(calculateValue, dependencies)`
+        1. calculateValue
+           - Any kind of function (likely one that performs a heavy resource calculation)
+        2. dependencies
+           - Array of dependencies like useEffect 
+           <br/><br/>
+      - useMemo returns 1 value 
+        1. The result of first param function, ex calculateValue
+           <br/><br/>
+      - Example
+        - ``` 
+          const heavyResourceCalculation = (x) => {
+                for (let i = 0; i < 1000000000; i++) {}
+          ......
+          const heavyCalculationValue = 
+                useMemo(() => heavyResourceCalculation(state), [state]);
+          ......
+          const lowCalculationValue = lowResourceCalculation(state)
+          ......
+          ```
+      - In this example, at first both will calculate but on rerender always lowCalc will run and based on dependency heavyCalc will skip running again and keep previous value
+      <hr/>
