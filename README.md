@@ -197,10 +197,13 @@
             1. Initially, it’s set to the initialValue you have passed. On the next renders, useRef will return the same object.
                <br/><br/>
         - Example
-            - ```  
- 
+            - ```
+              let ref = useRef(0)
+              .......
+              <button onClick={() => 
+                              console.log(ref.current = ref.current + 1)}>
+                                  Click</button>
               ```
-        - In this example,
         <br/>
         <hr/>
       

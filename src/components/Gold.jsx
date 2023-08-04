@@ -1,5 +1,4 @@
 import Silver from "./Silver.jsx";
-import {useEffect, useState} from "react";
 
 const Gold = () => {
 
