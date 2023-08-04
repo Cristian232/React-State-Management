@@ -1,22 +1,34 @@
 import Gold from "./components/Gold.jsx";
-import {useCallback, useState} from "react";
+import {useEffect, useState} from "react";
 import petsArray from "./data/MockData.jsx";
+
 
 function App() {
 
     const [count, setCount] = useState(0);
-    const [reverseCount, setReverseCount] = useState(100);
+    const [pet, setPet] = useState({});
 
-    const getPets = useCallback(() => {
-      return petsArray[count]
-    },[count])
+
+    useEffect(() => {
+        const getANewPet = (count) => {
+            if (count>=5){
+                count %= 5
+            }
+            setPet(petsArray[count])
+        }
+        getANewPet(count)
+        return () => {
+            delete getANewPet()
+        };
+    }, [count]);
+
 
     return (
         <>
-            <Gold getPets={getPets}/>
-            <button onClick={()=>setCount(count + 1)}>Get more pets :)</button>
-            <br/><hr/>
-            <button onClick={()=>setReverseCount(reverseCount - 1)}>Unrelated Button that rerenders {reverseCount}</button>
+            <Gold/>
+            {pet && <p>Name: {pet.name} {pet.species}</p>}
+            <p>Count : {count}</p>
+            <button onClick={()=>setCount((c) => c + 1)}>Count++</button>
         </>
     )
 }

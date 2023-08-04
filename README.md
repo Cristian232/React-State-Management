@@ -158,3 +158,49 @@
         - Function always gets recreated, and after it gets called from use effect on render based on dependency. <br/>
         - We use hook to memoize the initial function and use it even though another one gets created. This manages to recreate and use the initial function based on just one of the states, not always on both.
       <hr/>
+
+5.   useEffect()
+    - `import {useEffect} from "react";`
+        - Lets you call a function based on its dependencies. Or perform a side effect when something happens.
+          <br/><br/>
+        - useEffect takes in 2 params `useEffect(setup, dependencies)`
+            1. setup
+                - The function with your Effect’s logic.
+            2. dependencies
+                - Array of dependencies that will trigger run setup on change
+                - Empty array will run only once onMount
+                - No dependency will spam the call stack and will break the app likely
+                  <br/><br/>
+        - useEffect returns undefined
+               <br/><br/>
+        - Example
+            - ```  
+              const [count, setCount] = useState(0);
+              ......
+              useEffect(() => {
+                getANewPet(count)
+              }, [count]);
+              ```
+        - In this example, getANewPet gets called each time count changes 
+        <br/>
+        <hr/>
+     
+6. useRef()
+    - `import {useRef} from "react";`
+        - Lets you reference a value that’s not needed for rendering.
+          <br/><br/>
+        - useRef takes in 1 params `useRef(initialValue)`
+            1. initialValue
+                -  The value you want the ref object’s current property to be initially. This argument is ignored after the initial render.
+                  <br/><br/>
+        - useRef returns an object with a single property
+            1. Initially, it’s set to the initialValue you have passed. On the next renders, useRef will return the same object.
+               <br/><br/>
+        - Example
+            - ```  
+ 
+              ```
+        - In this example,
+        <br/>
+        <hr/>
+      
