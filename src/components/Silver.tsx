@@ -1,4 +1,4 @@
-import Bronze from "./Bronze.jsx";
+import Bronze from "./Bronze";
 
 const Silver = () => {
     return (

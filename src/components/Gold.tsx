@@ -1,4 +1,4 @@
-import Silver from "./Silver.jsx";
+import Silver from "./Silver";
 
 const Gold = () => {
 

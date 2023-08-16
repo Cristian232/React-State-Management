@@ -206,4 +206,16 @@
               ```
         <br/>
         <hr/>
-      
+    
+7. useContext()
+    - Initial SetUp and changes 
+    - Changed react project to use typescript | added tsconfig.json & tsconfig.node.json | changed build to tsc && vite build | changed all comp from jsx to tsx | also small mod to main.tsx "as HTMLEL...."
+    - Added seed mock data to public folder | pokemon.json
+    - Added pokemon interface to App 
+    - Create a usePokemon hook in App 
+      - With a useState pokemon
+      - With a useEffect onload => fetch( ... setPokemon( ...
+    - Create a PokemonList that return pokemons in a div and gets a pokemon array param
+    - Finished initial setup
+      <br/>
+      <hr/>
