@@ -239,6 +239,37 @@
             return (
             <div>Theme: {useContext(ThemeContext)}</div>
             ``` 
-
-      <br/>
-      <hr/>
+            <br/>
+    - Real example | We need to make the pokemon list available to our bronze, silver, gold comp.' <br/> <br/>
+   
+    - Step 1:
+       - Create context
+          `const PokemonContext = createContext({
+         pokemon: [] as Pokemon[]
+         })`
+         - Constant with ending Context camel case by convention 
+         - createContext func that has the starting state 
+    - Step 2:
+       - Wrap component with Provider and pass the value we want (our use pokemon hook)
+          ```
+         <PokemonContext.Provider value={usePokemon()}>
+             <PokemonList />
+             <Gold/>
+         </PokemonContext.Provider>
+         ```
+    - Step 3: 
+       - Use the context in our comp
+         ``` 
+         import {useContext} from "react";
+         import {PokemonContext} from "../App";
+         .........
+         const { pokemon } = useContext(PokemonContext)
+         .........
+         <div>
+            {pokemon.map((poke) => (
+                <div key={poke.id}>{poke.name}</div>
+            ))}
+         </div>
+         ```
+  <br/>
+  <hr/>

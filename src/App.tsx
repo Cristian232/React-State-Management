@@ -27,12 +27,14 @@ function usePokemon() : {
     return {pokemon}
 }
 
-const ThemeContext = createContext("light")
+export const PokemonContext = createContext({
+    pokemon: [] as Pokemon[]
+})
 
-const PokemonList = ({pokemon}:{ pokemon: Pokemon[]})=>{
+const PokemonList = () => {
+    const { pokemon } = useContext(PokemonContext)
     return (
         <div>
-            <div>Theme: {useContext(ThemeContext)}</div>
             {pokemon.map((poke) => (
                 <div key={poke.id}>{poke.name}</div>
             ))}
@@ -46,10 +48,10 @@ function App() {
 
     return (
         <>
-            <ThemeContext.Provider value={"light"}>
-                <PokemonList pokemon={pokemon} />
+            <PokemonContext.Provider value={usePokemon()}>
+                <PokemonList />
                 <Gold/>
-            </ThemeContext.Provider>
+            </PokemonContext.Provider>
         </>
     )
 }
