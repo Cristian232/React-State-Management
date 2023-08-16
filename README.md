@@ -218,4 +218,27 @@
     - Create a PokemonList that return pokemons in a div and gets a pokemon array param
     - Finished initial setup
       <br/>
+      <br/>
+    - We pass data to other components through prop drilling. In case of multiple components, we make it available globally through useContext.
+    - Step 1: 
+        - We create a context to use 
+          - `const ThemeContext = createContext("light")` with <br/> `import {createContext} from "react";`
+    - Step 2:
+        - We get a Provider to use | to wrap our comp that we want to make available the context also required a value prop 
+          - ```
+             <ThemeContext.Provider value={"light"}>
+                <PokemonList pokemon={pokemon} />
+             </ThemeContext.Provider> 
+            ```
+    - Step 3:
+        - We use the context in our preferred comp with useContext()
+          - ``` 
+            import {useContext} from "react";
+            ...........
+            const PokemonList = ({pokemon}:{ pokemon: Pokemon[]})=>{
+            return (
+            <div>Theme: {useContext(ThemeContext)}</div>
+            ``` 
+
+      <br/>
       <hr/>

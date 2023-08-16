@@ -1,5 +1,5 @@
 import Gold from "./components/Gold";
-import {useEffect, useState} from "react";
+import {createContext, useContext, useEffect, useState} from "react";
 
 interface Pokemon {
     id: number;
@@ -27,9 +27,12 @@ function usePokemon() : {
     return {pokemon}
 }
 
+const ThemeContext = createContext("light")
+
 const PokemonList = ({pokemon}:{ pokemon: Pokemon[]})=>{
     return (
         <div>
+            <div>Theme: {useContext(ThemeContext)}</div>
             {pokemon.map((poke) => (
                 <div key={poke.id}>{poke.name}</div>
             ))}
@@ -43,8 +46,10 @@ function App() {
 
     return (
         <>
-            <PokemonList pokemon={pokemon} />
-            <Gold/>
+            <ThemeContext.Provider value={"light"}>
+                <PokemonList pokemon={pokemon} />
+                <Gold/>
+            </ThemeContext.Provider>
         </>
     )
 }
